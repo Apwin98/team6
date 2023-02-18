@@ -10,7 +10,9 @@
         android:id="@+id/textview_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="@string/hello_first_fragment"
+        android:textColorHint="#877C7C"
         app:layout_constraintBottom_toTopOf="@id/button_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,11 +22,12 @@
     <EditText
         android:layout_width="310dp"
         android:layout_height="53dp"
-        android:text="Enter Location"
+        android:hint="Enter Location"
         android:textAlignment="center"
         android:textColor="#A19A9A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
