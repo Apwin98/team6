@@ -6,37 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
+
+    <!--    <EditText-->
+    <!--        android:layout_width="310dp"-->
+    <!--        android:layout_height="53dp"-->
+    <!--        android:hint="Enter Location"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textColor="#A19A9A"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.495"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
     <TextView
         android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColorHint="#877C7C"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
+        android:layout_width="213dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="108dp"
+        android:gravity="center"
+        android:text="Choose a city to find hidden gems!"
+        android:textColor="#000"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <EditText
-        android:layout_width="310dp"
-        android:layout_height="53dp"
-        android:hint="Enter Location"
-        android:textAlignment="center"
-        android:textColor="#A19A9A"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Spinner
+        android:id="@+id/cityDropDwn"
+        android:layout_width="220dp"
+        android:layout_height="47dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_first"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_first" />
 
     <Button
         android:id="@+id/button_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="260dp"
+        android:backgroundTint="@color/black"
         android:text="Search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

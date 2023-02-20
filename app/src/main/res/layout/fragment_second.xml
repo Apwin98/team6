@@ -4,60 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
+    tools:context=".SecondFragment"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/textview_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/culturalAtt"
-        android:layout_width="225dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="28dp"
-        android:text="Cultural Attractions"
+        android:id="@+id/NaturalAtt"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="172dp"
         android:backgroundTint="#16ACC6"
-        app:layout_constraintBottom_toTopOf="@+id/NaturalAtt"
+        android:textSize="18dp"
+        android:text="Natural Attractions"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/FoodAtt"
-        android:layout_width="225dp"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="28dp"
-        android:text="Food Attractions"
         android:backgroundTint="#16ACC6"
+        android:text="Food Attractions"
+        android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/culturalAtt"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.912" />
 
     <Button
-        android:id="@+id/NaturalAtt"
-        android:layout_width="225dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="120dp"
-        android:text="Natural Attractions"
+        android:id="@+id/culturalAtt"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="36dp"
         android:backgroundTint="#16ACC6"
-        app:layout_constraintBottom_toTopOf="@+id/button_second"
+        android:textSize="18dp"
+        android:text="Cultural Attractions"
+        app:layout_constraintBottom_toTopOf="@+id/NaturalAtt"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/previous"
-        android:backgroundTint="#061435"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_second" />
+    <!--    <Button-->
+    <!--        android:id="@+id/button_second"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/previous"-->
+    <!--        android:backgroundTint="#061435"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/textview_second" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
