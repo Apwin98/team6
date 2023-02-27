@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    String[] city = {"Austin", "Dallas", "Houston", "San Antonio"};
+    //String[] city = {"Austin", "Dallas", "Houston", "San Antonio"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         // City Drop Down
-        Spinner cityDropDwn = (Spinner) findViewById(R.id.cityDropDwn);
+        /*Spinner cityDropDwn = (Spinner) findViewById(R.id.cityDropDwn);
         ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_spinner_item, city);
         theAdapter.setDropDownViewResource( android.R.layout.simple_spinner_item);
-        cityDropDwn.setAdapter(theAdapter);
+        cityDropDwn.setAdapter(theAdapter);*/
     }
 
     @Override

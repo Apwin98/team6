@@ -35,15 +35,16 @@
 
     <Spinner
         android:id="@+id/cityDropDwn"
+        android:entries="@array/cities"
         android:layout_width="220dp"
-        android:layout_height="47dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_first"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_first" />
 
     <Button
-        android:id="@+id/button_first"
+        android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="260dp"
