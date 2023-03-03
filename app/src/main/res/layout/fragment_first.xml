@@ -6,20 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-
-    <!--    <EditText-->
-    <!--        android:layout_width="310dp"-->
-    <!--        android:layout_height="53dp"-->
-    <!--        android:hint="Enter Location"-->
-    <!--        android:textAlignment="center"-->
-    <!--        android:textColor="#A19A9A"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.495"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-
     <TextView
         android:id="@+id/textview_first"
         android:layout_width="213dp"
@@ -35,9 +21,9 @@
 
     <Spinner
         android:id="@+id/cityDropDwn"
+        android:layout_width="219dp"
+        android:layout_height="45dp"
         android:entries="@array/cities"
-        android:layout_width="220dp"
-        android:layout_height="50dp"
         app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,4 +39,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/postBtn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/round_button"
+        android:src="@drawable/baseline_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityDropDwn"
+        app:layout_constraintVertical_bias="0.993" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

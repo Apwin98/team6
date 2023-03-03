@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -8,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -18,6 +23,7 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -41,12 +47,21 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        // City Drop Down
-        /*Spinner cityDropDwn = (Spinner) findViewById(R.id.cityDropDwn);
-        ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_spinner_item, city);
-        theAdapter.setDropDownViewResource( android.R.layout.simple_spinner_item);
-        cityDropDwn.setAdapter(theAdapter);*/
+        // Image Button to Create Attraction
+        ImageButton postBtn= (ImageButton)findViewById(R.id.postBtn);
+        PostFragment postFragment = new PostFragment();
+        FirstFragment firstFragment = new FirstFragment();
+        postBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CreateActivity.class);
+                v.getContext().startActivity(intent);
+//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                ft.replace(R.id.fragment_container, postFragment);
+//                ft.commit();
+
+            }
+        });
     }
 
     @Override

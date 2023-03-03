@@ -6,67 +6,147 @@
     android:layout_height="match_parent"
     tools:context=".CreateActivity">
 
-    <TextView
-        android:id="@+id/location_name"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:gravity="center"
-        android:hint="Add Location Name"
-        android:padding="16dp"
-        android:textColorHint="#3C3D3E"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142" />
-
-    <TextView
-        android:id="@+id/location_description"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:background="#16ACC6"
-        android:gravity="center"
-        android:hint="Add description"
-        android:padding="16dp"
-        android:textColorHint="#FFFFFF"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
-
-    <TextView
-        android:id="@+id/location_image"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:background="#16ACC6"
-        android:gravity="center"
-        android:hint="Add image"
-        android:padding="16dp"
-        android:textColorHint="#FFFFFF"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
-
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/uploadImage"
+        android:layout_width="295dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="36dp"
+        android:text="Upload Image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="70dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="28dp"
+        android:text="NAME"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadImage" />
+
+    <TextView
+        android:id="@+id/descriptionLabel"
+        android:layout_width="147dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        android:text="DESCRIPTION"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameInput" />
+
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="290dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="4dp"
+        android:hint="Location name"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+
+    <EditText
+        android:id="@+id/decriptionInput"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:hint="Describe location"
+        android:inputType="textCapSentences|textMultiLine"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionLabel" />
+
+    <TextView
+        android:id="@+id/streetLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#16ACC6"
-        android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="12dp"
+        android:text="STREET"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/decriptionInput" />
+
+    <EditText
+        android:id="@+id/streetInput"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:hint="Street Address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/streetLabel" />
+
+    <TextView
+        android:id="@+id/cityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CITY"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/streetInput" />
+
+    <Spinner
+        android:id="@+id/cityDropDwn"
+        android:layout_width="129dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toStartOf="@+id/categoryDropDwn"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityLabel" />
+
+    <Spinner
+        android:id="@+id/categoryDropDwn"
+        android:layout_width="147dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
+
+    <TextView
+        android:id="@+id/categoryLabel"
+        android:layout_width="121dp"
+        android:layout_height="27dp"
+        android:text="CATEGORY"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cityLabel"
+        app:layout_constraintTop_toBottomOf="@+id/streetInput" />
+
+    <Button
+        android:id="@+id/submitAtt"
+        android:layout_width="136dp"
+        android:layout_height="48dp"
+        android:background="#16ACC6"
+        android:text="CREATE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.869" />
+        app:layout_constraintVertical_bias="0.938" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
