@@ -1,15 +1,12 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -20,7 +17,9 @@ public class CreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        getSupportActionBar().setTitle("Create Hidden Gem");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Create Hidden Gem");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Category DropDown
         Spinner spinner = findViewById(R.id.categoryDropDwn);
@@ -31,6 +30,15 @@ public class CreateActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
         spinner.setAdapter(arrayAdapter);
 
+    }
+
+    public boolean onOptionsItemSelected( MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
