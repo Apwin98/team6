@@ -47,21 +47,6 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        // Image Button to Create Attraction
-        ImageButton postBtn= (ImageButton)findViewById(R.id.postBtn);
-        PostFragment postFragment = new PostFragment();
-        FirstFragment firstFragment = new FirstFragment();
-        postBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), CreateActivity.class);
-                v.getContext().startActivity(intent);
-//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                ft.replace(R.id.fragment_container, postFragment);
-//                ft.commit();
-
-            }
-        });
     }
 
     @Override

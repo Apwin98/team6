@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,38 @@ public class FirstFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
 
+        binding.btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String city = spinner.getSelectedItem().toString();
+                //create a bundle that will be sent to fragmanager
+                Bundle bundle=new Bundle();
+                //in order to get the string, the key: "f1" will need to be used
+                bundle.putString("f1",spinner.getSelectedItem().toString());
+                //same as above but now the key is for the entire bundle
+                getParentFragmentManager().setFragmentResult("string1",bundle);
+                //System.out.println("chosen city: "+city);
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+            }
+        });
+
+        // Image Button to Create Attraction
+        ImageButton postBtn= (ImageButton)view.findViewById(R.id.postBtn);
+        PostFragment postFragment = new PostFragment();
+        FirstFragment firstFragment = new FirstFragment();
+        postBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CreateActivity.class);
+                v.getContext().startActivity(intent);
+//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                ft.replace(R.id.fragment_container, postFragment);
+//                ft.commit();
+
+            }
+        });
+
         return view;
     }
 
@@ -49,15 +82,6 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-                String pref1 = spinner.getSelectedItem().toString();
-                System.out.println("Chosen city: "+pref1);
-            }
-        });
     }
 
     @Override
