@@ -7,29 +7,40 @@
     tools:context=".CreateActivity">
 
     <Button
-        android:id="@+id/uploadImage"
+        android:id="@+id/uploadBtn"
         android:layout_width="295dp"
         android:layout_height="73dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:text="Upload Image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/imageName"
+        android:layout_width="290dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadBtn" />
 
     <TextView
         android:id="@+id/nameLabel"
         android:layout_width="70dp"
         android:layout_height="37dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="NAME"
         android:textColor="#000"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uploadImage" />
+        app:layout_constraintTop_toBottomOf="@+id/imageName" />
 
     <TextView
         android:id="@+id/descriptionLabel"
@@ -53,7 +64,7 @@
         android:hint="Location name"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
 
