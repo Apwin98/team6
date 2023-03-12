@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,14 +32,23 @@ public class ViewLocations extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        textView1=findViewById(R.id.textView);
-        textView2=findViewById(R.id.textView2);
+        //textView1=findViewById(R.id.textView);
+        //textView2=findViewById(R.id.textView2);
 
         Intent intent=getIntent();
         String city=intent.getStringExtra("city");
         String category=intent.getStringExtra("category");
-        textView1.setText(city);
-        textView2.setText(category);
+        //textView1.setText(city);
+        //textView2.setText(category);
+
+
+        //setting up recycler view
+        RecyclerView recyclerView=findViewById(R.id.mRecyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        L_RecyclerViewAdapter adapter=new L_RecyclerViewAdapter(this,locationsArray);
+        recyclerView.setAdapter(adapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Locations");
@@ -55,6 +66,7 @@ public class ViewLocations extends AppCompatActivity {
                     //show the names that are queried
                     System.out.println("****"+ locationsArray.get(i).getLocation() + "****");
                 }
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -62,8 +74,6 @@ public class ViewLocations extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
-
-
     }
 
     public boolean onOptionsItemSelected( MenuItem item) {
