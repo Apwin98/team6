@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
+//import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,11 +19,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ViewLocations extends AppCompatActivity {
+public class ViewLocations extends AppCompatActivity implements RecyclerViewInterface{
 
-    TextView textView1;
-    TextView textView2;
-    ArrayList<Locations> locationsArray = new ArrayList<Locations>();
+//    TextView textView1;
+//    TextView textView2;
+    ArrayList<Locations> locationsArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +47,12 @@ public class ViewLocations extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        L_RecyclerViewAdapter adapter=new L_RecyclerViewAdapter(this,locationsArray);
+        L_RecyclerViewAdapter adapter=new L_RecyclerViewAdapter(this,locationsArray, this);
         recyclerView.setAdapter(adapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Locations");
-        //if for some reason Category is now undercase, just change "Category" to "category"
+        //if for some reason Category is now lowercase, just change "Category" to "category"
         ref.orderByChild("Category").equalTo(category).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,5 +85,12 @@ public class ViewLocations extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent= new Intent(ViewLocations.this, LocationProfile.class);
+        intent.putExtra("location",locationsArray.get(position));
+        startActivity(intent);
     }
 }
