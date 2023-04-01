@@ -53,7 +53,7 @@ public class ViewLocations extends AppCompatActivity implements RecyclerViewInte
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Locations");
         //if for some reason Category is now lowercase, just change "Category" to "category"
-        ref.orderByChild("Category").equalTo(category).addValueEventListener(new ValueEventListener() {
+        ref.orderByChild("category").equalTo(category).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {

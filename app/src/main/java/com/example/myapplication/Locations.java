@@ -7,15 +7,15 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.net.URI;
 import java.net.URL;
 
 public class Locations implements Parcelable {
-    private String Location, Description, Address, City, Category, Key;
-
+    private String Location, Description, Address, City, Category, Key, Url;
 
     public Locations(){}
 
-    public Locations(String Location, String Description, String Address, String City, String Category,String Key){
+    public Locations(String Location, String Description, String Address, String City, String Category,String Key, String Url){
 
         this.Location = Location;
         this.Description = Description;
@@ -23,7 +23,7 @@ public class Locations implements Parcelable {
         this.City = City;
         this.Category = Category;
         this.Key = Key;
-
+        this.Url = Url;
     }
 
     protected Locations(Parcel in) {
@@ -33,6 +33,7 @@ public class Locations implements Parcelable {
         City = in.readString();
         Category = in.readString();
         Key = in.readString();
+        Url = in.readString();
     }
 
     public static final Creator<Locations> CREATOR = new Creator<Locations>() {
@@ -65,6 +66,9 @@ public class Locations implements Parcelable {
     public String getKey(){
         return Key;
     }
+    public String getUrl(){
+        return Url;
+    }
 
     //testing
     public void setLocation(String name){Location=name;}
@@ -83,7 +87,9 @@ public class Locations implements Parcelable {
     public void setKey(String name){
         Key=name;
     }
-
+    public void setUrl(String name){
+        Url=name;
+    }
     @Override
     public int describeContents() {
         return 0;
@@ -97,5 +103,6 @@ public class Locations implements Parcelable {
         dest.writeString(City);
         dest.writeString(Category);
         dest.writeString(Key);
+        dest.writeString(Url);
     }
 }

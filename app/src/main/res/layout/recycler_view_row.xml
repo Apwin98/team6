@@ -1,53 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:layout_margin="16dp"
-    app:cardBackgroundColor="#C0C0C0"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="8dp">
+    app:cardBackgroundColor="#86A5A2"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="10dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/LocationName"
+        app:layout_constraintEnd_toStartOf="@+id/LocationName"
+        app:layout_constraintStart_toStartOf="@+id/LocationName"
+        app:layout_constraintTop_toBottomOf="@+id/LocationName">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imageViewR"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="17dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/LocationName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/LocationName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="test"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/LocationName"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="66dp"
+            android:fontFamily="@font/concert_one"
+            android:text="Location"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/LocationKey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewR"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/LocationKey"
+            android:layout_width="166dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="12dp"
+            android:text="Key"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/LocationName"
+            app:layout_constraintTop_toBottomOf="@+id/LocationName" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:orientation="vertical">-->
 
-            <TextView
-                android:id="@+id/LocationKey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="test"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:orientation="horizontal">-->
 
-        </LinearLayout>
+<!--            <TextView-->
+<!--                android:id="@+id/LocationName"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:text="test"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="16sp" />-->
 
-    </LinearLayout>
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/LocationKey"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:text="test"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="16sp" />-->
+
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
 
 </androidx.cardview.widget.CardView>

@@ -22,6 +22,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class CreateActivity extends AppCompatActivity {
@@ -47,7 +49,7 @@ public class CreateActivity extends AppCompatActivity {
 
 
     Spinner City, Category;
-    String categoryItem, cityItem, Locationname, Description, Address;
+    String categoryItem, cityItem, Locationname, Description, Address, imageUrl;
 
     //Upload Images
     Uri imageUri;
@@ -140,9 +142,7 @@ public class CreateActivity extends AppCompatActivity {
                 activityResultLauncher.launch(photoPicker);
 
             }
-
         });
-
 
         binding.submitAtt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,10 +157,24 @@ public class CreateActivity extends AppCompatActivity {
                     reference = db.getReference("Locations");
                     String key = reference.push().getKey();
 
-                    Locations locations = new Locations(Locationname, Description, Address, cityItem, categoryItem, key);
-
-                    storageReference = FirebaseStorage.getInstance().getReference("Images").child(getFileExt(imageUri));
+                    storageReference = FirebaseStorage.getInstance().getReference(Locationname).child(getFileName(imageUri));
                     //.getInstance().getReference("Locations");
+                    storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                     uri.toString();
+                                    //reference.child(key).setValue(uri.toString());
+                                    //imageUrl = url_link;
+                                    reference.child(Locationname).child("url").setValue(uri.toString());
+                                }
+                            });
+                        }
+                    });
+
+                    Locations locations = new Locations(Locationname, Description, Address, cityItem, categoryItem, key, imageUrl);
 
                     reference.child(Locationname).setValue(locations).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -169,18 +183,7 @@ public class CreateActivity extends AppCompatActivity {
                             binding.decriptionInput.setText("");
                             binding.streetInput.setText("");
 
-                            storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
 
-                                            //reference.child(Locationname).child(key).setValue(imageUri.toString());
-                                        }
-                                    });
-                                }
-                            });
 
                             Intent intent = new Intent(CreateActivity.this, MainActivity.class);
                             startActivity(intent);

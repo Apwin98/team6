@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -31,9 +34,11 @@ public class L_RecyclerViewAdapter extends RecyclerView.Adapter<L_RecyclerViewAd
 
     @Override
     public void onBindViewHolder(@NonNull L_RecyclerViewAdapter.MyViewHolder holder, int position) {
+
         Locations location= locations.get(position);
         holder.tvLocationName.setText(location.getLocation());
-        holder.tvKey.setText(location.getKey());
+        holder.tvKey.setText(location.getDescription());
+        Picasso.get().load(location.getUrl()).into(holder.imageView);
         //use setImageResource if we plan on displaying an image in the list
     }
 
@@ -45,11 +50,14 @@ public class L_RecyclerViewAdapter extends RecyclerView.Adapter<L_RecyclerViewAd
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvLocationName,tvKey;
+        ImageView imageView;
         public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
+            imageView = itemView.findViewById(R.id.imageViewR);
             tvLocationName=itemView.findViewById(R.id.LocationName);
             tvKey=itemView.findViewById(R.id.LocationKey);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
