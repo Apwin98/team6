@@ -16,6 +16,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -60,6 +61,8 @@ public class CreateActivity extends AppCompatActivity {
         binding =  ActivityCreateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        @SuppressLint("HardwareIds") String stringAndroidID = Settings.Secure.getString(this.getContentResolver(),Settings.Secure.ANDROID_ID);
+        Toast.makeText(CreateActivity.this, stringAndroidID, Toast.LENGTH_SHORT).show();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Create Hidden Gem");
