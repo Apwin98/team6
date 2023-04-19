@@ -24,6 +24,11 @@ public class L_RecyclerViewAdapter extends RecyclerView.Adapter<L_RecyclerViewAd
         this.locations=locations;
         this.recyclerViewInterface=recyclerViewInterface;
     }
+
+    public void setFilteredList(ArrayList<Locations> filteredList){
+        this.locations=filteredList;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public L_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

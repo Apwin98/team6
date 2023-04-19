@@ -13,6 +13,8 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
@@ -67,6 +69,8 @@ public class CreateActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Create Hidden Gem");
         actionBar.setDisplayHomeAsUpEnabled(true);
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#112D2B"));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         // Category DropDown
         Spinner Category = findViewById(R.id.categoryDropDwn);

@@ -3,12 +3,16 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 //import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,12 +22,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ViewLocations extends AppCompatActivity implements RecyclerViewInterface{
 
 //    TextView textView1;
 //    TextView textView2;
     ArrayList<Locations> locationsArray = new ArrayList<>();
+    SearchView searchView;
+    L_RecyclerViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +38,8 @@ public class ViewLocations extends AppCompatActivity implements RecyclerViewInte
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#112D2B"));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         //textView1=findViewById(R.id.textView);
         //textView2=findViewById(R.id.textView2);
@@ -41,13 +50,28 @@ public class ViewLocations extends AppCompatActivity implements RecyclerViewInte
         //textView1.setText(city);
         //textView2.setText(category);
 
+        //Setting up search view
+        searchView=findViewById(R.id.searchView);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
 
         //setting up recycler view
         RecyclerView recyclerView=findViewById(R.id.mRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        L_RecyclerViewAdapter adapter=new L_RecyclerViewAdapter(this,locationsArray, this);
+        adapter=new L_RecyclerViewAdapter(this,locationsArray, this);
         recyclerView.setAdapter(adapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -74,6 +98,26 @@ public class ViewLocations extends AppCompatActivity implements RecyclerViewInte
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
+    }
+
+    private void filterList(String text) {
+        ArrayList<Locations> filteredList = new ArrayList<>();
+        for(Locations location:locationsArray)
+        {
+            if(location.getLocation().toLowerCase().contains(text.toLowerCase()))
+            {
+                filteredList.add(location);
+            }
+        }
+        if(filteredList.isEmpty())
+        {
+            //Toast.makeText(this, "No locations found", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            adapter.setFilteredList(filteredList);
+        }
+
     }
 
     public boolean onOptionsItemSelected( MenuItem item) {
