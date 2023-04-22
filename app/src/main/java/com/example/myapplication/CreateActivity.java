@@ -10,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,13 +21,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +48,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CreateActivity extends AppCompatActivity {
     ActivityCreateBinding binding;
@@ -56,6 +63,10 @@ public class CreateActivity extends AppCompatActivity {
 
     //Upload Images
     Uri imageUri;
+
+    TextView textview;
+    ArrayList<String> arrayList;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,26 +107,72 @@ public class CreateActivity extends AppCompatActivity {
         });
 
         //City Dropdown
-        Spinner City = findViewById(R.id.cityDropDwn);
-        ArrayList<String> cities = new ArrayList<>();
-        cities.add("Arlington");
-        cities.add("Fort Worth");
-        cities.add("Dallas");
-        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cities);
-        City.setAdapter(arrayAdapter2);
-        //records the selected city
-        City.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                cityItem = cities.get(position);
-                //Toast.makeText(CreateActivity.this, cityItem, Toast.LENGTH_SHORT).show();
-            }
+//        Spinner City = findViewById(R.id.cityDropDwn);
+//        ArrayList<String> cities = new ArrayList<>();
+//        cities.add("Arlington");
+//        cities.add("Fort Worth");
+//        cities.add("Dallas");
+//        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cities);
+//        City.setAdapter(arrayAdapter2);
+//        //records the selected city
+//        City.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+//                //cityItem = cities.get(position);
+//                //Toast.makeText(CreateActivity.this, cityItem, Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+        textview=findViewById(R.id.spinner);
+        arrayList=new ArrayList<>();
 
+        //getting the cities array and adding it to the array list to show to the user
+        Resources res = getResources();
+        String[] cities = res.getStringArray(R.array.cities);
+        arrayList.addAll(Arrays.asList(cities));
+
+        textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog=new Dialog(CreateActivity.this);
+                dialog.setContentView(R.layout.dialog_searchable_spinner);
+                dialog.getWindow().setLayout(650,800);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                EditText editText=dialog.findViewById(R.id.edit_text);
+                ListView listView=dialog.findViewById(R.id.list_view);
+                ArrayAdapter<String> adapter=new ArrayAdapter<>(CreateActivity.this, android.R.layout.simple_list_item_1,arrayList);
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
+                    @Override
+                    public void afterTextChanged(Editable s) {}
+                });
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        textview.setText(adapter.getItem(position));
+                        cityItem = adapter.getItem(position);
+                        //Toast.makeText(CreateActivity.this, cityItem, Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
             }
         });
+
 
 
         //Image Activity Launcher

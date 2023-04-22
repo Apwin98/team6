@@ -10,7 +10,7 @@
         android:id="@+id/uploadBtn"
         android:layout_width="295dp"
         android:layout_height="73dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Upload Image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
@@ -32,13 +32,13 @@
         android:id="@+id/nameLabel"
         android:layout_width="70dp"
         android:layout_height="37dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="NAME"
         android:textColor="#000"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageName" />
 
@@ -77,7 +77,7 @@
         android:inputType="textCapSentences|textMultiLine"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionLabel" />
 
@@ -117,12 +117,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/streetInput" />
 
-    <Spinner
-        android:id="@+id/cityDropDwn"
-        android:layout_width="129dp"
+<!--    <Spinner-->
+<!--        android:id="@+id/cityDropDwn"-->
+<!--        android:layout_width="129dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/categoryDropDwn"-->
+<!--        app:layout_constraintHorizontal_bias="0.845"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/cityLabel" />-->
+
+    <TextView
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/drop_arrow"
+        android:gravity="center_vertical"
+        android:hint="City"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/categoryDropDwn"
-        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cityLabel" />
 
@@ -130,9 +146,12 @@
         android:id="@+id/categoryDropDwn"
         android:layout_width="147dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryLabel"
+        app:layout_constraintVertical_bias="0.086" />
 
     <TextView
         android:id="@+id/categoryLabel"
@@ -156,8 +175,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.938" />
-
+        app:layout_constraintTop_toBottomOf="@+id/streetInput"
+        app:layout_constraintVertical_bias="0.652" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,13 +19,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/cityDropDwn"
-        android:layout_width="219dp"
-        android:layout_height="45dp"
-        android:entries="@array/cities"
+<!--    <Spinner-->
+<!--        android:id="@+id/cityDropDwn"-->
+<!--        android:layout_width="219dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:entries="@array/cities"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/btnSearch"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textview_first" />-->
+
+    <TextView
+        android:id="@+id/spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/drop_arrow"
+        android:gravity="center_vertical"
+        android:hint="Select City"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_first" />
 
