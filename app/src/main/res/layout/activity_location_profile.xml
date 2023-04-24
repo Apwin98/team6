@@ -91,7 +91,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
-        android:fontFamily="@font/concert_one"
+
         android:text="TextView"
         android:textColor="#333"
         android:textSize="50dp"
